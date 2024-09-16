@@ -1,30 +1,35 @@
+package com.fsegu.cajero;
+
 import java.util.concurrent.ThreadLocalRandom;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
+import com.fsegu.banco.CuentaBancaria;
+import com.fsegu.mock.GeneradorAutomaticoDeMovimientos;
 
 public class CajeroAutomatico {
-    CuentaBancaria cuentaBancariaActual;
-    CajeroAutomatico (String identificador, String contraseña){
+    private CuentaBancaria cuentaBancariaActual;
+
+    protected CajeroAutomatico (String identificador, String contraseña){
         double cantidadAleatoria = ThreadLocalRandom.current().nextDouble(0, 50000);
     cuentaBancariaActual = new CuentaBancaria("Nombre cualquiera", cantidadAleatoria);
     }
-    void mostrarSaldo() {
+    protected void mostrarSaldo() {
         System.out.println("Su saldo es + " + cuentaBancariaActual.obtenerSaldo());
     }
-    void ingresarDinero(){
+    protected void ingresarDinero(){
         System.out.println("Cuanto dinero quieres ingresar?");
         Scanner scanner = new Scanner(System.in);
         double cantidad = scanner.nextDouble();
         cuentaBancariaActual.ingresarDinero(cantidad);
     }
-    void sacarDinero(){
+    protected void sacarDinero(){
         System.out.println("Cuanto dinero quieres sacar?");
         Scanner scanner = new Scanner(System.in);
         double cantidad = scanner.nextDouble();
         cuentaBancariaActual.ingresarDinero(cantidad);
     }
-    void consultarUltimosMovimientos(){
+    protected void consultarUltimosMovimientos(){
         GeneradorAutomaticoDeMovimientos generadorAutomaticoDeMovimientos = new GeneradorAutomaticoDeMovimientos();
         System.out.println("Cuantos movimientos quieres consultar?");
         Scanner scanner = new Scanner(System.in);
@@ -32,12 +37,12 @@ public class CajeroAutomatico {
         ArrayList<String> movimientos = generadorAutomaticoDeMovimientos.obtenerMovimiento(numeroDeMovimientos, "EUR");
         mostrarMovimientos(movimientos);
     }
-    void mostrarMovimientos (ArrayList<String> movimientos){
+    private void mostrarMovimientos (ArrayList<String> movimientos){
         for (String movimiento: movimientos){
             System.out.println(movimiento);
         }
     }
-    void salir() {
+    protected void salir() {
         System.out.println("Muchas gracias por utilizar nuestros servicios");
     }
 }

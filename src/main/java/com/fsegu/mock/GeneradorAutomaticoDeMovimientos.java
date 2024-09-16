@@ -1,3 +1,5 @@
+package com.fsegu.mock;
+
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -10,9 +12,9 @@ public class GeneradorAutomaticoDeMovimientos {
     private static final String NOMINA = "Ingresa nómina de ";
     private static final String PAGO_RECIBO = "Pago de recibido de"; 
 
-    ArrayList<String> obtenerMovimiento(int numeroDeMovimiento, String moneda) {
+    public ArrayList<String> obtenerMovimiento(int numeroDeMovimientos, String moneda) {
         ArrayList<String> movimientos = new ArrayList<>();
-        for(int i; i < numeroDeMovimiento; i++) {
+        for(int i = 0; i < numeroDeMovimientos; i++) {
             int numeroDeMovimiento = obtenerIntAleatorio(1, 6);
             String tipoDeMovimiento;
             switch (numeroDeMovimiento) {

@@ -1,5 +1,7 @@
 //Programa que emula la interfaz de un cajero automático.
 
+package com.fsegu.cajero;
+
 import java.util.Scanner;
 
 public class Interfaz {

@@ -1,3 +1,5 @@
+package com.fsegu.banco;
+
 import java.math.BigDecimal;
 import java.util.Scanner;
 
